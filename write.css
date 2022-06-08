@@ -5,6 +5,8 @@
 
   --teal     : #559988;
   --autopink : #f9c0c8;
+  --purple   : #A59CF5; 
+  --sakura   : #fad6f8;
 
   --greybe : #bebebf;
   --grey29 : #292929; 
@@ -34,7 +36,13 @@ div[id="write-here"] {
   left:0; right:0; margin:auto; padding-top: 5vh;
 }
 
-#generate {width: 512px; height: 512px; left: 0; right: 0; margin: auto; margin-top: 18vh;}
+#weather{font-family: CozetteVector; font-weight: 200; font-size: 12px; width: 15vw;  left: 0; right: 0; margin: auto; margin-top: 18px;}
+#weather > div, #weather > h2 {left: 0; right: 0; margin: auto; text-align: center; margin: 3px;}
+#description{color: var(--purple);}
+#temp{color: var(--greybe);}
+#location{color: var(--sakura);}
+
+#generate {width: 512px; height: 512px; left: 0; right: 0; margin: auto; margin-top: 17vh;}
 .clothes {position: absolute; }
 div[class="clothes"] > img{position: absolute;}
 #tops {z-index: 3;}
