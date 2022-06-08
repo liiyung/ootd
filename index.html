@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-$jsonfile = file_get_contents("http://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50");
-$jsondata = json_decode($jsonfile);
-$temp = $jsondata->main->temp;
-$pressure = $jsondata->main->pressure;
-$mintemp = $jsondata->main->temp_min;
-$maxtemp = $jsondata->main->temp_max;
-$wind = $jsondata->wind->speed;
-$humidity = $jsondata->main->humidity;
-$desc = $jsondata->weather[0]->description;
-$maind = $jsondata->weather[0]->main;
-?>
-
 <html>
   <head>
     <link rel="stylesheet" href="write.css" />
@@ -48,9 +35,6 @@ $maind = $jsondata->weather[0]->main;
 
 
 
-
-
-
 <body>
 <!-- <div id="write-here" contenteditable="true"> 
 </div> -->
@@ -65,13 +49,27 @@ $maind = $jsondata->weather[0]->main;
 </div>
 
 
-<ul>
-  <li> Humidity : <?php echo($gethumidity); ?>%</li>
-  <li> Temperature :<?php echo($gettemp); ?> &deg;C</li>
-</ul>
+<!-- Date and Weather  -->
 
+      <div class="weatherBlock">
+        <div class="date">
+          <div id="month"></div>
+          <div id="day"></div>
+        </div>
+        <div class="weather">
+          <div class="weatherIcon">
+            <img src="assets/icons/OneDark/unknown.png" />
+          </div>
+          <div class="weatherValue">
+            <p>- °<span class="g">c</span></p>
+          </div>
+          <div class="weatherDescription">
+            <p></p>
+          </div>
+        </div>
+      </div>
 
-
+<script src="./weather.js"></script>
 
 </body>
 </html>
