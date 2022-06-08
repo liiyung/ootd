@@ -58,8 +58,12 @@
 
 
 <script lang="text/javascript">
+
+
+
+
     function weatherBalloon() {
-      fetch("https://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50")  
+      fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")  
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
         drawWeather(data); // Call drawWeather
@@ -68,8 +72,9 @@
         // catch any errors
       });
     }
+
     window.onload = function() {
-      weatherBalloon( 6167865 );
+      weatherBalloon();
     }
 
     function drawWeather( d ) {
