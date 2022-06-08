@@ -1,0 +1,43 @@
+
+
+
+:root {
+
+  --teal     : #559988;
+  --autopink : #f9c0c8;
+
+  --greybe : #bebebf;
+  --grey29 : #292929; 
+  --grey24 : #242424;
+
+  dark1a : #17191a;
+
+  --background-primary: var(--dark1a);
+  --text: #66666f;
+}
+
+
+@font-face {
+  font-family: CozetteVector;
+  src: url("assets/CozetteVector.ttf");
+}
+
+::selection {background: var(--grey24); color: var(--autopink); border-radius: 5px;}
+
+body {background: var(--background-primary);}
+a, a:active, a:focus {outline: none !important;}
+
+div[id="write-here"] {
+  outline: none !important;
+  color:var(--text);  font-family: CozetteVector; font-weight: 200; font-size: 13px; 
+  width:40vw; height: 100vh; min-height: 100%;
+  left:0; right:0; margin:auto; padding-top: 5vh;
+}
+
+#generate {width: 512px; height: 512px; left: 0; right: 0; margin: auto; margin-top: 18vh;}
+.clothes {position: absolute; }
+div[class="clothes"] > img{position: absolute;}
+#tops {z-index: 3;}
+#bottoms { z-index: 9; }
+
+

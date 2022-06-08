@@ -1,0 +1,47 @@
+<cities>
+<calctime>0</calctime>
+<count>2</count>
+<mode>name</mode>
+<list>
+<item>
+<city id="1819729" name="Hong Kong">
+<coord lon="114.1577" lat="22.2855"/>
+<country>HK</country>
+<sun rise="2022-06-07T21:38:48" set="2022-06-08T11:06:08"/>
+</city>
+<temperature value="25.33" min="24.54" max="25.74" unit="celsius"/>
+<feels_like value="26.4" unit="celsius"/>
+<humidity value="95" unit="%"/>
+<pressure value="1004" unit="hPa"/>
+<wind>
+<speed value="4.02" unit="m/s" name="Gentle Breeze"/>
+<direction value="315" code="NW" name="Northwest"/>
+<gust value=""/>
+</wind>
+<clouds value="100" name="overcast clouds" low="0" middle="0" high="0"/>
+<precipitation mode="no"/>
+<weather number="502" value="heavy intensity rain" icon="10d"/>
+<lastupdate value="2022-06-08T08:09:11" unix="1654675751"/>
+</item>
+<item>
+<city id="1819730" name="Hong Kong Special Administrative Region">
+<coord lon="114.1667" lat="22.25"/>
+<country>HK</country>
+<sun rise="2022-06-07T21:38:50" set="2022-06-08T11:06:01"/>
+</city>
+<temperature value="24.92" min="24.12" max="25.32" unit="celsius"/>
+<feels_like value="25.92" unit="celsius"/>
+<humidity value="94" unit="%"/>
+<pressure value="1004" unit="hPa"/>
+<wind>
+<speed value="4.02" unit="m/s" name="Gentle Breeze"/>
+<direction value="315" code="NW" name="Northwest"/>
+<gust value=""/>
+</wind>
+<clouds value="100" name="overcast clouds" low="0" middle="0" high="0"/>
+<precipitation mode="no"/>
+<weather number="502" value="heavy intensity rain" icon="10d"/>
+<lastupdate value="2022-06-08T08:05:36" unix="1654675536"/>
+</item>
+</list>
+</cities>
