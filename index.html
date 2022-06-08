@@ -50,7 +50,7 @@
 </div>
 
 
-<div id="weather">
+<div id="weather" style="background: red;">
     <div id="description"></div>
     <h1 id="temp"></h1>
     <div id="location"></div>
@@ -59,7 +59,7 @@
 
 <script lang="text/javascript">
     function weatherBalloon() {
-      fetch("http://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50")  
+      fetch("https://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50")  
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
         drawWeather(data); // Call drawWeather
@@ -75,7 +75,6 @@
     function drawWeather( d ) {
       // var celcius = Math.round(parseFloat(d.main.temp)-273.15);
       // var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32); 
-      
       document.getElementById('description').innerHTML = d.weather[0].description;
       document.getElementById('temp').innerHTML = d.main.temp + '&deg;';
       document.getElementById('location').innerHTML = d.name;
