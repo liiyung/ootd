@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<?php
-$url = "http://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50";
-$getweather = simplexml_load_file($url);
-$gethumidity = $getweather->list->item->humidity['value'];
-$gettemp = $getweather->list->item-temperature['value'];
-?>
 
+<?php
+$jsonfile = file_get_contents("http://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50");
+$jsondata = json_decode($jsonfile);
+$temp = $jsondata->main->temp;
+$pressure = $jsondata->main->pressure;
+$mintemp = $jsondata->main->temp_min;
+$maxtemp = $jsondata->main->temp_max;
+$wind = $jsondata->wind->speed;
+$humidity = $jsondata->main->humidity;
+$desc = $jsondata->weather[0]->description;
+$maind = $jsondata->weather[0]->main;
+?>
 
 <html>
   <head>
