@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="write.css" />
 
 
+
 <script type="text/javascript">
   var tops_list = [
        "assets/tops_white.png"
@@ -49,27 +50,39 @@
 </div>
 
 
-<!-- Date and Weather  -->
+<div id="weather">
+    <div id="description"></div>
+    <h1 id="temp"></h1>
+    <div id="location"></div>
+</div>
 
-      <div class="weatherBlock">
-        <div class="date">
-          <div id="month"></div>
-          <div id="day"></div>
-        </div>
-        <div class="weather">
-          <div class="weatherIcon">
-            <img src="assets/icons/OneDark/unknown.png" />
-          </div>
-          <div class="weatherValue">
-            <p>- °<span class="g">c</span></p>
-          </div>
-          <div class="weatherDescription">
-            <p></p>
-          </div>
-        </div>
-      </div>
 
-<script src="./weather.js"></script>
+<script lang="text/javascript">
+    function weatherBalloon() {
+      fetch("http://api.openweathermap.org/data/2.5/find?q=Hong+Kong&units=metric&type=accurate&mode=xml&APPID=9da4a81e00e67412875447a5136c7d50")  
+      .then(function(resp) { return resp.json() }) // Convert data to json
+      .then(function(data) {
+        drawWeather(data); // Call drawWeather
+      })
+      .catch(function() {
+        // catch any errors
+      });
+    }
+    window.onload = function() {
+      weatherBalloon( 6167865 );
+    }
+
+    function drawWeather( d ) {
+      // var celcius = Math.round(parseFloat(d.main.temp)-273.15);
+      // var fahrenheit = Math.round(((parseFloat(d.main.temp)-273.15)*1.8)+32); 
+      
+      document.getElementById('description').innerHTML = d.weather[0].description;
+      document.getElementById('temp').innerHTML = d.main.temp + '&deg;';
+      document.getElementById('location').innerHTML = d.name;
+    }
+</script>
+
+
 
 </body>
 </html>
