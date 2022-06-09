@@ -12,7 +12,7 @@
   --grey29 : #292929; 
   --grey24 : #242424;
 
-  dark1a : #17191a;
+  --dark1a : #17191a;
 
   --background-primary: var(--dark1a);
   --text: #66666f;
@@ -42,6 +42,7 @@ div[id="write-here"] {
 #weather > div, #weather > h2 {left: 0; right: 0; margin: auto; text-align: center; margin: 3px;}
 #description{color: var(--purple);}
 #temp{color: var(--greybe);}
+#humidity{color: var(--sakura);}
 #location{color: var(--sakura);}
 
 #generate {width: 512px; height: 512px; left: 0; right: 0; margin: auto; margin-top: 17vh;}

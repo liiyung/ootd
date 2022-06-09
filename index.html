@@ -7,47 +7,87 @@
 
 <!---- ################################### get weather ###################################--->
 <script lang="text/javascript">
-    function getWeather() {
-      fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")  
+
+
+    // fetches fucking inconvenient unreadable unreachable inaccessible data aka pRoMiSe. 
+    // you can't put the data into any convenient function or variable and instead have to call it
+    // by the stupid .then() whatever function, so no point "return"ing anything outside of it
+    // OR 
+    // use "async function", and inside it use "weather = await fetchWeather();"
+    function fetchWeather() {
+      return fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")  
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
         // drawWeather(data); // Call drawWeather
-        weatherDescription = data.weather[0].description
-        temp = data.main.temp
+        // console.log(data);
+        // return data;
+        weatherDescription = data.weather[0].description;
+        temp = data.main.feels_like;
+        humidity = data.main.humidity;
         document.getElementById('description').innerHTML = weatherDescription;
         document.getElementById('temp').innerHTML = temp + '&deg;C';
-
-        // check which keyword are in weather description (working)
-        rainCheck = /rain/
-        rainMatch = rainCheck.test(weatherDescription);
-
-        // if statement true (working)
-        if (rainMatch == true) {
-          // document.getElementById('temp').innerHTML = 'WEAR A RAINCOAT';
-        }
-
-
-
+        document.getElementById('humidity').innerHTML = humidity + '%';
+        matchWeather(weatherDescription, temp, humidity);
       })
       .catch(function() {
         // catch any errors
       });
     }
 
-    window.onload = function() {
-      getWeather();
+
+    function matchWeather(weatherDescription, temp, humidity) {
+      if (humidity > 60 && /rain/.test(weatherDescription) == true) {
+          let string = "wet";
+          get_tops(string); 
+          get_bottoms(string)
+        }
+        else if (humidity < 60 && /rain/.test(weatherDescription) == true) {
+          let string = "light";
+          get_tops(string);
+          get_bottoms(string);
+        }
     }
 
-    // function drawWeather( d ) {
-    //   document.getElementById('description').innerHTML = d.weather[0].description;
-    //   document.getElementById('temp').innerHTML = d.main.temp + '&deg;C';
-    //   // document.getElementById('location').innerHTML = d.name;
-    // }
+
+
+    function get_tops(string) {
+      tops_dictionary = {
+      "wet":["assets/tops_white.png", "assets/tops_cats.png"]
+   ,  "light":["assets/tops_white.png"]
+  }
+      console.log(string);
+     var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
+     document.getElementById("tops").src = tops_dictionary[string][randomNum];}
+
+
+
+    function get_bottoms(string) {
+      bottoms_dictionary = {
+      "wet":["assets/bottoms_green.png", "assets/bottoms_blue.png"]
+   ,  "light":["assets/bottoms_green.png"]
+  }
+      console.log(string);
+     var randomNum = Math.floor(Math.random() * bottoms_dictionary[string].length);
+     document.getElementById("bottoms").src = bottoms_dictionary[string][randomNum];}
+
+
+
+
+    window.onload = function() {
+      fetchWeather();
+    }
+
+
 </script>
 <!---- ################################### get weather ###################################--->
 
 <!--- ################################### get random image ###################################--->
 <script type="text/javascript">
+  // no errors thrown (yet?) on this javascript dictionary
+  tops_dictionary = {
+      "warm":["assets/tops_white.png"]
+   ,  "light":["cottontop_01.png", "cottontop_02.png"]
+  }
   var tops_list = [
        "assets/tops_white.png"
      , "assets/tops_cats.png"
@@ -56,21 +96,6 @@
        "assets/bottoms_green.png"
      , "assets/bottoms_blue.png"
   ];
-
-  function get_tops() {
-    var img = '<img src=\"';
-    var randomIndex = Math.floor(Math.random() * tops_list.length);
-    img += tops_list[randomIndex];
-    img += '\" alt=\"Some alt text\"/>';
-    return img;
-  }
-  function get_bottoms() {
-    var img = '<img src=\"';
-    var randomIndex = Math.floor(Math.random() * bottoms_list.length);
-    img += bottoms_list[randomIndex];
-    img += '\" alt=\"Some alt text\"/>';
-    return img;
-  }
 
 
 </script>
@@ -104,15 +129,16 @@ $( function() {
 
 <div id="generate">
   <div class="clothes">
-    <img src="" id="tops"> <script type="text/javascript">document.write(get_tops());</script>
+    <img src="" id="tops"> 
 
-    <img src="" id="bottoms"> <script type="text/javascript">document.write(get_bottoms());</script>
+    <img src="" id="bottoms"> 
   </div>
 </div>
 
 <div id="weather" class="draggable">
     <div id="description"></div>
     <h2 id="temp"></h2>
+    <div id="humidity"></div>
     <!-- <div id="location"></div> -->
 </div>
 
