@@ -7,11 +7,27 @@
 
 <!---- ################################### get weather ###################################--->
 <script lang="text/javascript">
-    function weatherBalloon() {
+    function getWeather() {
       fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")  
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
-        drawWeather(data); // Call drawWeather
+        // drawWeather(data); // Call drawWeather
+        weatherDescription = data.weather[0].description
+        temp = data.main.temp
+        document.getElementById('description').innerHTML = weatherDescription;
+        document.getElementById('temp').innerHTML = temp + '&deg;C';
+
+        // check which keyword are in weather description (working)
+        rainCheck = /rain/
+        rainMatch = rainCheck.test(weatherDescription);
+
+        // if statement true (working)
+        if (rainMatch == true) {
+          // document.getElementById('temp').innerHTML = 'WEAR A RAINCOAT';
+        }
+
+
+
       })
       .catch(function() {
         // catch any errors
@@ -19,14 +35,14 @@
     }
 
     window.onload = function() {
-      weatherBalloon();
+      getWeather();
     }
 
-    function drawWeather( d ) {
-      document.getElementById('description').innerHTML = d.weather[0].description;
-      document.getElementById('temp').innerHTML = d.main.temp + '&deg;C';
-      // document.getElementById('location').innerHTML = d.name;
-    }
+    // function drawWeather( d ) {
+    //   document.getElementById('description').innerHTML = d.weather[0].description;
+    //   document.getElementById('temp').innerHTML = d.main.temp + '&deg;C';
+    //   // document.getElementById('location').innerHTML = d.name;
+    // }
 </script>
 <!---- ################################### get weather ###################################--->
 
@@ -41,9 +57,6 @@
      , "assets/bottoms_blue.png"
   ];
 
-  let text = "The rain in SPAIN stays mainly in the plain";
-  let result = text.match("ain");
-  
   function get_tops() {
     var img = '<img src=\"';
     var randomIndex = Math.floor(Math.random() * tops_list.length);
@@ -62,6 +75,20 @@
 
 </script>
 <!--- ################################### get random image ###################################--->
+
+
+<!-- <script src="./jquery-3.6.0.min.js" type="text/javascript"></script> -->
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+  <script>
+  $( function() {
+    $( ".draggable" ).draggable();
+  } );
+  </script>
+ -->
+
   </head>
   
 <body>
@@ -83,8 +110,7 @@
   </div>
 </div>
 
-
-<div id="weather">
+<div id="weather" class="draggable">
     <div id="description"></div>
     <h2 id="temp"></h2>
     <!-- <div id="location"></div> -->
@@ -93,6 +119,61 @@
 
 
 
+
+
+
+
+<script type="text/javascript">
+// Wrap the module in a self-executing anonymous function
+// to avoid leaking variables into global scope:
+(function (document) {
+    // Enable ECMAScript 5 strict mode within this function:
+    'use strict';
+    
+    // Obtain a node list of all elements that have class="draggable":
+    var draggable = document.getElementsByClassName('draggable'),
+        draggableCount = draggable.length, // cache the length
+        i; // iterator placeholder
+    
+    // This function initializes the drag of an element where an
+    // event ("mousedown") has occurred:
+    function startDrag(evt) {
+        
+        // The element's position is based on its top left corner,
+        // but the mouse coordinates are inside of it, so we need
+        // to calculate the positioning difference:
+        var diffX = evt.clientX - this.offsetLeft,
+            diffY = evt.clientY - this.offsetTop,
+            that = this; // "this" refers to the current element,
+                         // let's keep it in cache for later use.
+        
+        // moveAlong places the current element (referenced by "that")
+        // according to the current cursor position:
+        function moveAlong(evt) {
+            that.style.left = (evt.clientX - diffX) + 'px';
+            that.style.top = (evt.clientY - diffY) + 'px';
+        }
+        
+        // stopDrag removes event listeners from the element,
+        // thus stopping the drag:
+        function stopDrag() {
+            document.removeEventListener('mousemove', moveAlong);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+        
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('mousemove', moveAlong);
+    }
+    
+    // Now that all the variables and functions are created,
+    // we can go on and make the elements draggable by assigning
+    // a "startDrag" function to a "mousedown" event that occurs
+    // on those elements:
+    for (i = 0; i < draggableCount; i += 1) {
+        draggable[i].addEventListener('mousedown', startDrag);
+    }
+}(document));
+</script>
 
 
 
