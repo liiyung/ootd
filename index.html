@@ -5,63 +5,8 @@
     <link rel="stylesheet" href="write.css" />
 
 
-
-<script type="text/javascript">
-  var tops_list = [
-       "assets/tops_white.png"
-     , "assets/tops_cats.png"
-  ];
-  var bottoms_list = [
-       "assets/bottoms_green.png"
-     , "assets/bottoms_blue.png"
-  ];
-  function get_tops() {
-    var img = '<img src=\"';
-    var randomIndex = Math.floor(Math.random() * tops_list.length);
-    img += tops_list[randomIndex];
-    img += '\" alt=\"Some alt text\"/>';
-    return img;
-  }
-  function get_bottoms() {
-    var img = '<img src=\"';
-    var randomIndex = Math.floor(Math.random() * bottoms_list.length);
-    img += bottoms_list[randomIndex];
-    img += '\" alt=\"Some alt text\"/>';
-    return img;
-  }
-</script>
-
-  </head>
-  
-
-
-
-<body>
-<!-- <div id="write-here" contenteditable="true"> 
-</div> -->
-
-
-<div id="generate">
-  <div class="clothes">
-    <img src="" id="tops"> <script type="text/javascript">document.write(get_tops());</script>
-
-    <img src="" id="bottoms"> <script type="text/javascript">document.write(get_bottoms());</script>
-  </div>
-</div>
-
-
-<div id="weather">
-    <div id="description"></div>
-    <h2 id="temp"></h2>
-    <div id="location"></div>
-</div>
-
-
+<!---- ################################### get weather ###################################--->
 <script lang="text/javascript">
-
-
-
-
     function weatherBalloon() {
       fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")  
       .then(function(resp) { return resp.json() }) // Convert data to json
@@ -80,9 +25,75 @@
     function drawWeather( d ) {
       document.getElementById('description').innerHTML = d.weather[0].description;
       document.getElementById('temp').innerHTML = d.main.temp + '&deg;C';
-      document.getElementById('location').innerHTML = d.name;
+      // document.getElementById('location').innerHTML = d.name;
     }
 </script>
+<!---- ################################### get weather ###################################--->
+
+<!--- ################################### get random image ###################################--->
+<script type="text/javascript">
+  var tops_list = [
+       "assets/tops_white.png"
+     , "assets/tops_cats.png"
+  ];
+  var bottoms_list = [
+       "assets/bottoms_green.png"
+     , "assets/bottoms_blue.png"
+  ];
+
+  let text = "The rain in SPAIN stays mainly in the plain";
+  let result = text.match("ain");
+  
+  function get_tops() {
+    var img = '<img src=\"';
+    var randomIndex = Math.floor(Math.random() * tops_list.length);
+    img += tops_list[randomIndex];
+    img += '\" alt=\"Some alt text\"/>';
+    return img;
+  }
+  function get_bottoms() {
+    var img = '<img src=\"';
+    var randomIndex = Math.floor(Math.random() * bottoms_list.length);
+    img += bottoms_list[randomIndex];
+    img += '\" alt=\"Some alt text\"/>';
+    return img;
+  }
+
+
+</script>
+<!--- ################################### get random image ###################################--->
+  </head>
+  
+<body>
+
+
+
+
+
+
+<!-- <div id="write-here" contenteditable="true"> 
+</div> -->
+
+
+<div id="generate">
+  <div class="clothes">
+    <img src="" id="tops"> <script type="text/javascript">document.write(get_tops());</script>
+
+    <img src="" id="bottoms"> <script type="text/javascript">document.write(get_bottoms());</script>
+  </div>
+</div>
+
+
+<div id="weather">
+    <div id="description"></div>
+    <h2 id="temp"></h2>
+    <!-- <div id="location"></div> -->
+</div>
+
+
+
+
+
 
 
 
