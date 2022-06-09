@@ -36,7 +36,7 @@ div[id="write-here"] {
   left:0; right:0; margin:auto; padding-top: 5vh;
 }
 
-.draggable{position: absolute; cursor: move;}
+.draggable{cursor: move;}
 
 #weather{font-family: CozetteVector; font-weight: 200; font-size: 12px; width: 15vw;  left: 0; right: 0; margin: auto; margin-top: 18px;}
 #weather > div, #weather > h2 {left: 0; right: 0; margin: auto; text-align: center; margin: 3px;}
