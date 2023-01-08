@@ -2,151 +2,194 @@
 
 <html>
   <head>
-    <link rel="stylesheet" href="write.css" />
+    <link rel="stylesheet" href="ootd.css" />
+
+    <!---- ################################### get weather ###################################--->
+    <script lang="text/javascript">
 
 
-<!---- ################################### get weather ###################################--->
-<script lang="text/javascript">
-
-
-    // fetches fucking inconvenient unreadable unreachable inaccessible data aka pRoMiSe. 
-    // you can't put the data into any convenient function or variable and instead have to call it
-    // by the stupid .then() whatever function, so no point "return"ing anything outside of it
-    // OR 
-    // use "async function", and inside it use "weather = await fetchWeather();"
-    function fetchWeather() {
-      return fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")  
-      .then(function(resp) { return resp.json() }) // Convert data to json
-      .then(function(data) {
-        // drawWeather(data); // Call drawWeather
-        // console.log(data);
-        // return data;
-        weatherDescription = data.weather[0].description;
-        temp = data.main.feels_like;
-        humidity = data.main.humidity;
-        document.getElementById('description').innerHTML = weatherDescription;
-        document.getElementById('temp').innerHTML = temp + '&deg;C';
-        document.getElementById('humidity').innerHTML = humidity + '%';
-        matchWeather(weatherDescription, temp, humidity);
-      })
-      .catch(function() {
-        // catch any errors
-      });
-    }
-
-
-    function matchWeather(weatherDescription, temp, humidity) {
-      if (humidity > 60 && /rain/.test(weatherDescription) == true) {
-          let string = "wet";
-          get_tops(string); 
-          get_bottoms(string)
+        // fetches inconvenient unreadable unreachable inaccessible data aka pRoMiSe.
+        // you can't put the data into any convenient function or variable and instead have to call it
+        // by the stupid .then() whatever function to resolve the promise, so no point "return"ing anything outside of it
+        // OR
+        // use "async function", and inside the asynchronous function, use "weather = await fetchWeather();"
+        // BUT either of these options doesn't let you RETURN ANYTHING READABLE TO ANOTHER FUNCTION. FUCKING HELL IT'S USELESS.
+        // YOU HAVE TO DO EVERYTHING YOU WANT TO DO *WITHIN* THE FUNCTION THAT IS RESOLVING THE PROMISE.
+        function fetchWeather() {
+          return fetch("https://api.openweathermap.org/data/2.5/weather?id=1819729&units=metric&appid=9da4a81e00e67412875447a5136c7d50")
+          .then(function(resp) { return resp.json() }) // Convert data to json
+          .then(function(data) {
+            // drawWeather(data); // Call drawWeather
+            // console.log(data);
+            // return data;
+            weatherDescription = data.weather[0].description;
+            temp = data.main.feels_like;
+            humidity = data.main.humidity;
+            document.getElementById('description').innerHTML = weatherDescription;
+            document.getElementById('temp').innerHTML = temp + '&deg;C';
+            document.getElementById('humidity').innerHTML = humidity + '%';
+            matchWeather(weatherDescription, temp, humidity);
+          })
+          .catch(function() {
+            // catch any errors
+          });
         }
-        else if (humidity < 60 && /rain/.test(weatherDescription) == true) {
-          let string = "light";
-          get_tops(string);
-          get_bottoms(string);
+
+
+        function matchWeather(weatherDescription, temp, humidity) {
+          // prioritize temperature and humidity
+          // very hot and humid
+          if (temp > 26 && humidity > 65) {
+              // i will sweat. a lot. so everything must be breathable
+              // (honestly preferably long sleeves but alas). no shorts
+              let string = "breathables";
+              get_tops(string);
+              get_bottoms(string);
+            }
+          // very hot but dry
+          else if (temp > 26 && humidity < 65) {
+              // still hot, but dry enough to enjoy wearing short sleeves without feeling sticky
+              // dry enough for my thighs to not stick together (or stick to things...) so i can wear shorts
+              let string = "shorties";
+              get_tops(string);
+              get_bottoms(string);
+          }
+          // slightly hot and wet
+          else if (temp < 26 && temp > 21 && humidity > 65) {
+              // breathable, preferable long sleeves to avoid the humidity sticking onto me
+              // but alas let's mix it up
+              let string = "breathables";
+              get_tops(string);
+              get_bottoms(string);
+          }
+          // slightly hot and dry
+          else if (temp < 26 && temp > 21 && humidity < 65) {
+              // actually alright temperature when the wind blows. can mostly wear anything
+              let string = "all";
+              get_tops(string);
+              get_bottoms(string);
+          }
+          // PERFECT TEMPERATURE, and any humidity cannot change that!!
+          else if (temp < 21 && temp > 17) {
+            let string = "all";
+            get_tops(string);
+            // second layer just in case
+            get_second_layer(); // only scooped shirts
+            get_bottoms("all");
+          }
+          else if (temp < 17 && temp > 12) {
+            // at this temperature, long sleeves are a must. collared so they can be layered
+            let string = "collared_sleeves";
+            get_tops(string);
+            get_second_layer(); // only scooped shirts
+            get_bottoms("all");
+          }
+          else if (temp < 12) {
+            // at this temperature, long sleeves are a must. collared so they can be layered
+            let string = "collared_sleeves";
+            get_tops(string);
+            get_second_layer(); // only scooped shirts
+            get_bottoms("anything");
+          }
+
         }
-    }
+
+        // function accessoriesWeather(weatherDescription, temp, humidity) {
+        //   if (/rain/.test(weatherDescription) == true) {
+        //       let string = "wet";
+        //       get_accessories(string);
+        //     }
+        //   else if (humidity < 65 && /rain/.test(weatherDescription) == true) {
+        //       let string = "light";
+        //       get_tops(string);
+        //       get_bottoms(string);
+        //     }
+        // }
 
 
 
-    function get_tops(string) {
+        function get_tops(string) {
+          tops_dictionary = {
+          "breathables":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png"]
+       ,  "shorties":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_rainbowmix.png"]
+       ,  "all":[]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
+         document.getElementById("tops").src = tops_dictionary[string][randomNum];}
+
+
+
+        function get_bottoms(string) {
+          bottoms_dictionary = {
+          "breathables":["assets/bottoms_signature.png", "assets/bottoms_green.png", "assets/bottoms_beige.png", "assets/bottoms_jeans.png", "assets/bottoms_japanese.png", "assets/bottoms_sienna.png", "assets/bottoms_venice.png"]
+       ,  "light":["assets/bottoms_green.png", "assets/bottoms_blue.png"]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * bottoms_dictionary[string].length);
+         document.getElementById("bottoms").src = bottoms_dictionary[string][randomNum];}
+
+        function get_accessories(string) {
+          accesories_dictionary = {
+          "wet":["assets/bottoms_green.png", "assets/bottoms_blue.png"]
+       ,  "light":["assets/bottoms_green.png"]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * accesories_dictionary[string].length);
+         document.getElementById("accesories").src = accesories_dictionary[string][randomNum];}
+
+
+
+
+        window.onload = function() {
+          fetchWeather();
+        }
+    </script>
+    <!---- ################################### get weather ###################################--->
+
+    <!--- ################################### get random image ###################################--->
+    <script type="text/javascript">
+      // no errors thrown (yet?) on this javascript dictionary
       tops_dictionary = {
-      "wet":["assets/tops_white.png", "assets/tops_cats.png"]
-   ,  "light":["assets/tops_white.png"]
-  }
-      console.log(string);
-     var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
-     document.getElementById("tops").src = tops_dictionary[string][randomNum];}
+        warm: ["assets/tops_white.png"],
+        light: ["cottontop_01.png", "cottontop_02.png"],
+      };
+      var tops_list = ["assets/tops_white.png", "assets/tops_cats.png"];
+      var bottoms_list = [
+        "assets/bottoms_green.png",
+        "assets/bottoms_blue.png",
+      ];
+    </script>
+    <!--- ################################### get random image ###################################--->
 
-
-
-    function get_bottoms(string) {
-      bottoms_dictionary = {
-      "wet":["assets/bottoms_green.png", "assets/bottoms_blue.png"]
-   ,  "light":["assets/bottoms_green.png"]
-  }
-      console.log(string);
-     var randomNum = Math.floor(Math.random() * bottoms_dictionary[string].length);
-     document.getElementById("bottoms").src = bottoms_dictionary[string][randomNum];}
-
-
-
-
-    window.onload = function() {
-      fetchWeather();
-    }
-
-
-</script>
-<!---- ################################### get weather ###################################--->
-
-<!--- ################################### get random image ###################################--->
-<script type="text/javascript">
-  // no errors thrown (yet?) on this javascript dictionary
-  tops_dictionary = {
-      "warm":["assets/tops_white.png"]
-   ,  "light":["cottontop_01.png", "cottontop_02.png"]
-  }
-  var tops_list = [
-       "assets/tops_white.png"
-     , "assets/tops_cats.png"
-  ];
-  var bottoms_list = [
-       "assets/bottoms_green.png"
-     , "assets/bottoms_blue.png"
-  ];
-
-
-</script>
-<!--- ################################### get random image ###################################--->
-
-
-<!--- ################################### draggable ###################################--->
-<script src="./jquery-3.6.0.js"></script>
-<script src="./jquery-ui.js"></script>
-<script>
-$( function() {
-  $( ".draggable" ).draggable();
-} );
-</script>
-<!--- ################################### draggable ###################################--->
-
-
-
+    <!--- ################################### draggable ###################################--->
+    <script src="./jquery-3.6.0.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <script>
+      $(function () {
+        $(".draggable").draggable();
+      });
+    </script>
+    <!--- ################################### draggable ###################################--->
   </head>
-  
-<body>
 
-
-
-
-
-
-<!-- <div id="write-here" contenteditable="true"> 
+  <body>
+    <!-- <div id="write-here" contenteditable="true"> 
 </div> -->
 
+    <div id="generate">
+      <div class="clothes">
+        <img src="" id="tops" />
 
-<div id="generate">
-  <div class="clothes">
-    <img src="" id="tops"> 
+        <img src="" id="bottoms" />
+      </div>
+    </div>
 
-    <img src="" id="bottoms"> 
-  </div>
-</div>
-
-<div id="weather" class="draggable">
-    <div id="description"></div>
-    <h2 id="temp"></h2>
-    <div id="humidity"></div>
-    <!-- <div id="location"></div> -->
-</div>
-
-
-
-
-
-
-
-</body>
+    <div id="weather" class="draggable">
+      <div id="description"></div>
+      <h2 id="temp"></h2>
+      <div id="humidity"></div>
+      <!-- <div id="location"></div> -->
+    </div>
+  </body>
 </html>
