@@ -75,7 +75,7 @@
             get_tops(string);
             // second layer just in case
             get_second_layer(); // only scooped shirts
-            get_bottoms("all");
+            get_bottoms(string);
           }
           else if (temp < 17 && temp > 12) {
             // at this temperature, long sleeves are a must. collared so they can be layered
@@ -112,7 +112,7 @@
           tops_dictionary = {
           "breathables":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png"]
        ,  "shorties":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_rainbowmix.png"]
-       ,  "all":[]
+       ,  "all":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
@@ -124,6 +124,7 @@
           bottoms_dictionary = {
           "breathables":["assets/bottoms_signature.png", "assets/bottoms_green.png", "assets/bottoms_beige.png", "assets/bottoms_jeans.png", "assets/bottoms_japanese.png", "assets/bottoms_sienna.png", "assets/bottoms_venice.png"]
        ,  "light":["assets/bottoms_green.png", "assets/bottoms_blue.png"]
+       ,  "all":["assets/bottoms_signature.png", "assets/bottoms_green.png", "assets/bottoms_beige.png", "assets/bottoms_jeans.png", "assets/bottoms_japanese.png", "assets/bottoms_sienna.png", "assets/bottoms_venice.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * bottoms_dictionary[string].length);
