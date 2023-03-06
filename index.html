@@ -62,7 +62,7 @@
               get_tops(string);
               get_bottoms(string);
           }
-          // slightly hot and dry
+          // slightly hot and dry, PERFECT
           else if (temp < 26 && temp > 21 && humidity < 65) {
               // actually alright temperature when the wind blows. can mostly wear anything
               let string = "all";
@@ -110,11 +110,11 @@
 
         function get_tops(string) {
           tops_dictionary = {
-          "breathables":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png"]
+          "breathables":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png", "assets/tops_redpolkadot.png"]
        ,  "shorties":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_rainbowmix.png"]
-       ,  "collared":[]
+       ,  "collared":["assets/tops_redpolkadot.png"]
        ,  "scooped":[]
-       ,  "all":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png", "assets/tops_pinkcutout.png"]
+       ,  "all":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png", "assets/tops_pinkcutout.png", "assets/tops_redpolkadot.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
