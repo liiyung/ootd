@@ -73,6 +73,7 @@
           else if (temp < 21 && temp > 17) {
             let string = "all";
             get_tops(string);
+            get_layers(string);
             get_bottoms(string);
           }
           else if (temp < 17 && temp > 12) {
@@ -118,11 +119,11 @@
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
          document.getElementById("tops").src = tops_dictionary[string][randomNum];}
 
-        function get_layers() {
+        function get_layers(string) {
           layers_dictionary = {
-          "sweaters":[]
+          "sweaters":["assets/layers_sweaterpurple", "assets/layers_sweaterblue", "assets/layers_sweaterbrown"]
        ,  "vests":[]
-       ,  "all":[]
+       ,  "all":["assets/layers_sweaterpurple", "assets/layers_sweaterblue", "assets/layers_sweaterbrown"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * layers_dictionary[string].length);
