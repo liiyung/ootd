@@ -74,21 +74,21 @@
             let string = "all";
             get_tops(string);
             // second layer just in case
-            get_second_layer(); // only scooped shirts
+            get_layers("all"); // only scooped shirts
             get_bottoms(string);
           }
           else if (temp < 17 && temp > 12) {
             // at this temperature, long sleeves are a must. collared so they can be layered
-            let string = "collared_sleeves";
+            let string = "collared";
             get_tops(string);
-            get_second_layer(); // only scooped shirts
+            get_layers("sweaters"); // only scooped shirts
             get_bottoms("all");
           }
           else if (temp < 12) {
             // at this temperature, long sleeves are a must. collared so they can be layered
-            let string = "collared_sleeves";
+            let string = "collared";
             get_tops(string);
-            get_second_layer(); // only scooped shirts
+            get_layers("sweaters"); // only scooped shirts
             get_bottoms("anything");
           }
 
@@ -112,7 +112,7 @@
           tops_dictionary = {
           "breathables":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png", "assets/tops_redpolkadot.png"]
        ,  "shorties":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_rainbowmix.png"]
-       ,  "collared":["assets/tops_redpolkadot.png"]
+       ,  "collared":["assets/tops_redpolkadot.png", "assets/tops_sheerpetal.png"]
        ,  "scooped":[]
        ,  "all":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png", "assets/tops_pinkcutout.png", "assets/tops_redpolkadot.png"]
       }
@@ -120,7 +120,14 @@
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
          document.getElementById("tops").src = tops_dictionary[string][randomNum];}
 
-
+        function get_layers() {
+          layers_dictionary = {
+          "sweaters":[]
+       ,  "vests":[]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * layers_dictionary[string].length);
+         document.getElementById("layers").src = layers_dictionary[string][randomNum];}
 
         function get_bottoms(string) {
           bottoms_dictionary = {
@@ -183,7 +190,7 @@
     <div id="generate">
       <div class="clothes">
         <img src="" id="tops" class="draggable"/>
-
+        <img src="" id="layers" class="draggable"/>
         <img src="" id="bottoms" class="draggable"/>
       </div>
     </div>

@@ -1,54 +1,110 @@
-
-
-
 :root {
+  --teal: #559988;
+  --autopink: #f9c0c8;
+  --purple: #a59cf5;
+  --sakura: #fad6f8;
 
-  --teal     : #559988;
-  --autopink : #f9c0c8;
-  --purple   : #A59CF5; 
-  --sakura   : #fad6f8;
+  --greybe: #bebebf;
+  --grey29: #292929;
+  --grey24: #242424;
 
-  --greybe : #bebebf;
-  --grey29 : #292929; 
-  --grey24 : #242424;
-
-  --dark1a : #17191a;
+  --dark1a: #17191a;
 
   --background-primary: var(--dark1a);
   --text: #66666f;
 }
-
 
 @font-face {
   font-family: CozetteVector;
   src: url("assets/CozetteVector.ttf");
 }
 
-::selection {background: var(--grey24); color: var(--autopink); border-radius: 5px;}
+::selection {
+  background: var(--grey24);
+  color: var(--autopink);
+  border-radius: 5px;
+}
 
-body {background: var(--background-primary);}
-a, a:active, a:focus {outline: none !important;}
+body {
+  background: var(--background-primary);
+}
+a,
+a:active,
+a:focus {
+  outline: none !important;
+}
 
 div[id="write-here"] {
   outline: none !important;
-  color:var(--text);  font-family: CozetteVector; font-weight: 200; font-size: 13px; 
-  width:40vw; height: 100vh; min-height: 100%;
-  left:0; right:0; margin:auto; padding-top: 5vh;
+  color: var(--text);
+  font-family: CozetteVector;
+  font-weight: 200;
+  font-size: 13px;
+  width: 40vw;
+  height: 100vh;
+  min-height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-top: 5vh;
 }
 
-.draggable{cursor: move; z-index: 18;}
+.draggable {
+  cursor: move;
+  z-index: 18;
+}
 
-#weather{font-family: CozetteVector; font-weight: 200; font-size: 12px; width: 15vw;  left: 0; right: 0; margin: auto; margin-top: 18px;}
-#weather > div, #weather > h2 {left: 0; right: 0; margin: auto; text-align: center; margin: 3px;}
-#description{color: var(--purple);}
-#temp{color: var(--greybe);}
-#humidity{color: var(--sakura);}
-#location{color: var(--sakura);}
+#weather {
+  font-family: CozetteVector;
+  font-weight: 200;
+  font-size: 12px;
+  width: 15vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 18px;
+}
+#weather > div,
+#weather > h2 {
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  margin: 3px;
+}
+#description {
+  color: var(--purple);
+}
+#temp {
+  color: var(--greybe);
+}
+#humidity {
+  color: var(--sakura);
+}
+#location {
+  color: var(--sakura);
+}
 
-#generate {width: 512px; height: 512px; left: 0; right: 0; margin: auto; margin-top: 17vh;}
-.clothes {position: absolute; }
-div[class="clothes"] > img{position: absolute;}
-#tops {z-index: 3;}
-#bottoms { z-index: 9; }
-
-
+#generate {
+  width: 512px;
+  height: 512px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 17vh;
+}
+.clothes {
+  position: absolute;
+}
+div[class="clothes"] > img {
+  position: absolute;
+}
+#tops {
+  z-index: 3;
+}
+#layers {
+  z-index: 6;
+}
+#bottoms {
+  z-index: 9;
+}
