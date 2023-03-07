@@ -25,10 +25,11 @@
             weatherDescription = data.weather[0].description;
             temp = data.main.feels_like;
             humidity = data.main.humidity;
+            wind_speed = data.wind.speed;
             document.getElementById('description').innerHTML = weatherDescription;
             document.getElementById('temp').innerHTML = temp + '&deg;C';
             document.getElementById('humidity').innerHTML = humidity + '%';
-            matchWeather(weatherDescription, temp, humidity);
+            matchWeather(weatherDescription, temp, humidity, wind_speed);
           })
           .catch(function() {
             // catch any errors
@@ -36,7 +37,7 @@
         }
 
 
-        function matchWeather(weatherDescription, temp, humidity) {
+        function matchWeather(weatherDescription, temp, humidity, wind_speed) {
           // prioritize temperature and humidity
           // very hot and humid
           if (temp > 26 && humidity > 65) {
@@ -73,8 +74,10 @@
           else if (temp < 21 && temp > 17) {
             let string = "all";
             get_tops(string);
-            get_layers(string);
             get_bottoms(string);
+            if (wind_speed > 20) {
+              get_layers(string);
+            }
           }
           else if (temp < 17 && temp > 12) {
             // at this temperature, long sleeves are a must. collared so they can be layered
