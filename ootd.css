@@ -9,9 +9,20 @@
   --grey24: #242424;
 
   --dark1a: #17191a;
+}
 
-  --background-primary: var(--dark1a);
-  --text: #66666f;
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-primary: #fefaf0;
+    --text: #4b4943;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-primary: var(--dark1a);
+    --text: #666666;
+  }
 }
 
 @font-face {
