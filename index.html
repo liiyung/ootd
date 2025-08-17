@@ -51,7 +51,7 @@
           else if (temp > 26 && humidity < 65) {
               // still hot, but dry enough to enjoy wearing short sleeves without feeling sticky
               // dry enough for my thighs to not stick together (or stick to things...) so i can wear shorts
-              let string = "shorties";
+              let string = "all";
               get_tops(string);
               get_bottoms(string);
           }
@@ -67,19 +67,35 @@
           else if (temp < 26 && temp > 21 && humidity < 65) {
               // actually alright temperature when the wind blows. can mostly wear anything
               let string = "all";
-              get_tops(string);
-              get_bottoms(string);
+              var top_or_dress = Math.floor((Math.random() * 100) + 1);
+              if (top_or_dress % 2 == 0) {
+                    get_dresses(string);
+                } else {
+                    get_tops(string);
+                    get_bottoms(string);
+                }
+              
           }
           // PERFECT TEMPERATURE, and any humidity cannot change that!!
-          else if (temp < 21 && temp > 17) {
+          else if (temp < 21 && temp > 16) {
             let string = "all";
-            get_tops(string);
-            get_bottoms(string);
+
+            var top_or_dress = Math.floor((Math.random() * 100) + 1);
+            if (top_or_dress % 2 == 0) {
+                  // get_dresses(string); // temporary disable, only one dress and it's badly drawn
+                  get_tops(string);
+                  get_bottoms(string);
+              } else {
+                  get_tops(string);
+                  get_bottoms(string);
+              }
+            // get_tops(string);
+            // get_bottoms(string);
             if (wind_speed > 20) {
               get_layers(string);
             }
           }
-          else if (temp < 17 && temp > 12) {
+          else if (temp < 16 && temp > 12) {
             // at this temperature, long sleeves are a must. collared so they can be layered
             let string = "collared";
             get_tops(string);
@@ -93,6 +109,16 @@
             get_layers("sweaters"); // only scooped shirts
             get_bottoms("anything");
           }
+
+          if (temp < 20) {
+            get_scarves("all");
+          }
+
+          if (temp < 14) {
+            get_coats("all");
+          }
+
+
 
         }
 
@@ -109,14 +135,25 @@
         // }
 
 
+        function get_dresses(string) {
+          dresses_dictionary = {
+          "short":["assets/dresses/black_gunne.png",]
+       ,  "long":["assets/dresses/black_gunne.png",]
+       ,  "collared":[]
+       ,  "uncollared":["assets/dresses/black_gunne.png",]
+       ,  "all":["assets/dresses/black_gunne.png",]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * dresses_dictionary[string].length);
+         document.getElementById("dresses").src = dresses_dictionary[string][randomNum];}
 
         function get_tops(string) {
           tops_dictionary = {
-          "breathables":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_redpolkadot.png"]
-       ,  "shorties":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_rainbowmix.png"]
-       ,  "collared":["assets/tops_redpolkadot.png", "assets/tops_sheerpetal.png", "assets/tops_floral.png"]
-       ,  "scooped":[]
-       ,  "all":["assets/tops_white.png", "assets/tops_cats.png", "assets/tops_floral.png", "assets/tops_rainbowmix.png", "assets/tops_sheerpetal.png", "assets/tops_pinkcutout.png", "assets/tops_redpolkadot.png"]
+          "breathables":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/grey_heart.png"]
+       ,  "shorties":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png"]
+       ,  "collared":["assets/tops/red_polkadot.png"]
+       ,  "uncollared":["assets/tops/black_cowl.png", "assets/tops/white_basic.png"]
+       ,  "all":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/black_cowl.png", "assets/tops/black_bustier.png", "assets/tops/grey_heart.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
@@ -124,9 +161,9 @@
 
         function get_layers(string) {
           layers_dictionary = {
-          "sweaters":["assets/layers_sweaterpurple.png", "assets/layers_sweaterblue.png", "assets/layers_sweaterbrown.png"]
+          "sweaters":["assets/layers/navy_uniqlo.png", "assets/layers/brown_uniqlo.png"]
        ,  "vests":[]
-       ,  "all":["assets/layers_sweaterpurple.png", "assets/layers_sweaterblue.png", "assets/layers_sweaterbrown.png"]
+       ,  "all":["assets/layers/navy_uniqlo.png", "assets/layers/brown_uniqlo.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * layers_dictionary[string].length);
@@ -134,9 +171,9 @@
 
         function get_bottoms(string) {
           bottoms_dictionary = {
-          "breathables":["assets/bottoms_signature.png", "assets/bottoms_green.png", "assets/bottoms_beige.png", "assets/bottoms_japanese.png"]
+          "breathables":["assets/bottoms/navy_signature.png", "assets/bottoms/beige_copy.png", "assets/bottoms/brown_pants.png", "assets/bottoms/black_stretch.png", "assets/bottoms/black_silk.png", "assets/bottoms/skirt_tartan.png", "assets/bottoms/black_funeral.png"]
        ,  "light":["assets/bottoms_green.png", "assets/bottoms_blue.png"]
-       ,  "all":["assets/bottoms_signature.png", "assets/bottoms_blue.png", "assets/bottoms_bluelolita.png", "assets/bottoms_green.png", "assets/bottoms_beige.png", "assets/bottoms_jeans.png", "assets/bottoms_japanese.png", "assets/bottoms_sienna.png", "assets/bottoms_venice.png"]
+       ,  "all":["assets/bottoms/navy_signature.png", "assets/bottoms/beige_copy.png", "assets/bottoms/navy_nopockets.png", "assets/bottoms/navy_lolita.png", "assets/bottoms/skirt_venice.png", "assets/bottoms/black_silk.png", "assets/bottoms/brown_pants.png", "assets/bottoms/black_stretch.png", "assets/bottoms/skirt_tartan.png", "assets/bottoms/black_funeral.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * bottoms_dictionary[string].length);
@@ -151,6 +188,22 @@
          var randomNum = Math.floor(Math.random() * accesories_dictionary[string].length);
          document.getElementById("accesories").src = accesories_dictionary[string][randomNum];}
 
+        function get_scarves(string) {
+          scarves_dictionary = {
+          "all":["assets/scarves/black_cat.png"]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * scarves_dictionary[string].length);
+         document.getElementById("scarves").src = scarves_dictionary[string][randomNum];}
+
+
+        function get_coats(string) {
+          coats_dictionary = {
+          "all":["assets/coats/brown_osaka.png"]
+      }
+          console.log(string);
+         var randomNum = Math.floor(Math.random() * coats_dictionary[string].length);
+         document.getElementById("coats").src = coats_dictionary[string][randomNum];}
 
 
 
@@ -161,7 +214,7 @@
     <!---- ################################### get weather ###################################--->
 
     <!--- ################################### get random image ###################################--->
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
       // no errors thrown (yet?) on this javascript dictionary
       tops_dictionary = {
         warm: ["assets/tops_white.png"],
@@ -172,7 +225,7 @@
         "assets/bottoms_green.png",
         "assets/bottoms_blue.png",
       ];
-    </script>
+    </script> -->
     <!--- ################################### get random image ###################################--->
 
     <!--- ################################### draggable ###################################--->
@@ -193,8 +246,11 @@
     <div id="generate">
       <div class="clothes">
         <img src="" id="tops" class="draggable" />
+        <img src="" id="dresses" class="draggable" />
         <img src="" id="layers" class="draggable" />
         <img src="" id="bottoms" class="draggable" />
+        <img src="" id="coats" class="draggable" />
+        <img src="" id="scarves" class="draggable" />
       </div>
     </div>
 
