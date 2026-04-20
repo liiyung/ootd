@@ -40,42 +40,42 @@
         function matchWeather(weatherDescription, temp, humidity, wind_speed) {
           // prioritize temperature and humidity
           // very hot and humid
-          if (temp > 26 && humidity > 65) {
+          if (temp > 31 && humidity > 65) {
               // i will sweat. a lot. so everything must be breathable
               // (honestly preferably long sleeves but alas). no shorts
               let string = "breathables";
               get_tops(string);
               get_bottoms(string);
             }
-          // very hot but dry
-          else if (temp > 26 && humidity < 65) {
+          // hot but not hot enough to care about humidity
+          else if ( 21 < temp < 30 ) {
               // still hot, but dry enough to enjoy wearing short sleeves without feeling sticky
               // dry enough for my thighs to not stick together (or stick to things...) so i can wear shorts
               let string = "all";
               get_tops(string);
               get_bottoms(string);
           }
-          // slightly hot and wet
-          else if (temp < 26 && temp > 21 && humidity > 65) {
-              // breathable, preferable long sleeves to avoid the humidity sticking onto me
-              // but alas let's mix it up
-              let string = "breathables";
-              get_tops(string);
-              get_bottoms(string);
-          }
-          // slightly hot and dry, PERFECT
-          else if (temp < 26 && temp > 21 && humidity < 65) {
-              // actually alright temperature when the wind blows. can mostly wear anything
-              let string = "all";
-              var top_or_dress = Math.floor((Math.random() * 100) + 1);
-              if (top_or_dress % 2 == 0) {
-                    get_dresses(string);
-                } else {
-                    get_tops(string);
-                    get_bottoms(string);
-                }
+          // // slightly hot and wet
+          // else if (temp < 26 && temp > 21 && humidity > 65) {
+          //     // breathable, preferable long sleeves to avoid the humidity sticking onto me
+          //     // but alas let's mix it up
+          //     let string = "breathables";
+          //     get_tops(string);
+          //     get_bottoms(string);
+          // }
+          // // slightly hot and dry, PERFECT
+          // else if (temp < 26 && temp > 21 && humidity < 65) {
+          //     // actually alright temperature when the wind blows. can mostly wear anything
+          //     let string = "all";
+          //     var top_or_dress = Math.floor((Math.random() * 100) + 1);
+          //     if (top_or_dress % 2 == 0) {
+          //           get_dresses(string);
+          //       } else {
+          //           get_tops(string);
+          //           get_bottoms(string);
+          //       }
               
-          }
+          // }
           // PERFECT TEMPERATURE, and any humidity cannot change that!!
           else if (temp < 21 && temp > 16) {
             let string = "all";
@@ -151,9 +151,9 @@
           tops_dictionary = {
           "breathables":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png"]
        ,  "shorties":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png"]
-       ,  "collared":["assets/tops/red_polkadot.png", "assets/tops/pink_checkered.png", "assets/wednesday.png"]
+       ,  "collared":["assets/tops/red_polkadot.png", "assets/tops/pink_checkered.png", "assets/wednesday.png", "assets/tops/black-beige_striped.png",]
        ,  "uncollared":["assets/tops/black_cowl.png", "assets/tops/white_basic.png"]
-       ,  "all":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/black_cowl.png", "assets/tops/black_bustier.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png"]
+       ,  "all":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/black_cowl.png", "assets/tops/black_bustier.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png", "assets/tops/black-beige_striped.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
