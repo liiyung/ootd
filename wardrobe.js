@@ -48,8 +48,23 @@ const wardrobe = {
         {
             name: "grey braless cami tank",
             path: "assets/tops/grey_braless.png",
-            properties: ["not breathable", "uncollared", "long sleeve", "not layerable"]
-        },                                                                              
+            properties: ["breathable", "uncollared", "sleeveless", "not layerable"]
+        },
+        {
+            name: "rubys brown green sheer shirt, reminds me of astronomy",
+            path: "assets/tops/astronomer_green.png",
+            properties: ["not breathable", "collared", "short sleeve", "layerable"]
+        },  
+        {
+            name: "black sbase",
+            path: "assets/tops/black_sbase.png",
+            properties: ["breathable", "collared", "short sleeve", "layerable"]
+        }, 
+        {
+            name: "butler navy shirt",
+            path: "assets/tops/navy_butler.png",
+            properties: ["breathable", "collared", "long sleeve", "layerable"]
+        },                                                                       
 
     ],
     bottoms: [
