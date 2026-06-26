@@ -55,27 +55,7 @@
               get_tops(string);
               get_bottoms(string);
           }
-          // // slightly hot and wet
-          // else if (temp < 26 && temp > 21 && humidity > 65) {
-          //     // breathable, preferable long sleeves to avoid the humidity sticking onto me
-          //     // but alas let's mix it up
-          //     let string = "breathables";
-          //     get_tops(string);
-          //     get_bottoms(string);
-          // }
-          // // slightly hot and dry, PERFECT
-          // else if (temp < 26 && temp > 21 && humidity < 65) {
-          //     // actually alright temperature when the wind blows. can mostly wear anything
-          //     let string = "all";
-          //     var top_or_dress = Math.floor((Math.random() * 100) + 1);
-          //     if (top_or_dress % 2 == 0) {
-          //           get_dresses(string);
-          //       } else {
-          //           get_tops(string);
-          //           get_bottoms(string);
-          //       }
-              
-          // }
+
           // PERFECT TEMPERATURE, and any humidity cannot change that!!
           else if (temp < 21 && temp > 16) {
             let string = "all";
@@ -122,18 +102,6 @@
 
         }
 
-        // function accessoriesWeather(weatherDescription, temp, humidity) {
-        //   if (/rain/.test(weatherDescription) == true) {
-        //       let string = "wet";
-        //       get_accessories(string);
-        //     }
-        //   else if (humidity < 65 && /rain/.test(weatherDescription) == true) {
-        //       let string = "light";
-        //       get_tops(string);
-        //       get_bottoms(string);
-        //     }
-        // }
-
 
         function get_dresses(string) {
           dresses_dictionary = {
@@ -149,11 +117,11 @@
 
         function get_tops(string) {
           tops_dictionary = {
-          "breathables":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png","assets/tops/paleblue_sheer.png"]
+          "breathables":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png","assets/tops/paleblue_sheer.png", "assets/tops/pink_linen.png"]
        ,  "shorties":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png"]
        ,  "collared":["assets/tops/red_polkadot.png", "assets/tops/pink_checkered.png", "assets/wednesday.png", "assets/tops/black-beige_striped.png","assets/tops/paleblue_sheer.png"]
        ,  "uncollared":["assets/tops/black_cowl.png", "assets/tops/white_basic.png"]
-       ,  "all":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/black_cowl.png", "assets/tops/black_bustier.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png", "assets/tops/black-beige_striped.png", "assets/tops/paleblue_sheer.png"]
+       ,  "all":["assets/tops/white_basic.png",  "assets/tops/red_polkadot.png", "assets/tops/black_cowl.png", "assets/tops/black_bustier.png", "assets/tops/grey_heart.png", "assets/tops/pink_checkered.png", "assets/tops/wednesday.png", "assets/tops/black-beige_striped.png", "assets/tops/paleblue_sheer.png", "assets/tops/pink_linen.png"]
       }
           console.log(string);
          var randomNum = Math.floor(Math.random() * tops_dictionary[string].length);
@@ -213,20 +181,6 @@
     </script>
     <!---- ################################### get weather ###################################--->
 
-    <!--- ################################### get random image ###################################--->
-<!--     <script type="text/javascript">
-      // no errors thrown (yet?) on this javascript dictionary
-      tops_dictionary = {
-        warm: ["assets/tops_white.png"],
-        light: ["cottontop_01.png", "cottontop_02.png"],
-      };
-      var tops_list = ["assets/tops_white.png", "assets/tops_cats.png"];
-      var bottoms_list = [
-        "assets/bottoms_green.png",
-        "assets/bottoms_blue.png",
-      ];
-    </script> -->
-    <!--- ################################### get random image ###################################--->
 
     <!--- ################################### draggable ###################################--->
     <script src="./jquery-3.6.0.js"></script>
