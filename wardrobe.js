@@ -44,7 +44,12 @@ const wardrobe = {
             name: "river island black cowl neck 3/4 sleeve",
             path: "assets/tops/black_cowl.png",
             properties: ["not breathable", "uncollared", "long sleeve", "not layerable"]
-        },                                                                                
+        },  
+        {
+            name: "grey braless cami tank",
+            path: "assets/tops/grey_braless.png",
+            properties: ["not breathable", "uncollared", "long sleeve", "not layerable"]
+        },                                                                              
 
     ],
     bottoms: [
