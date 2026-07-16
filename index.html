@@ -48,14 +48,21 @@
               get_tops(strings);
               get_bottoms(strings);
             }
-          // // hot but not hot enough to care about humidity
-          // else if ( 21 < temp < 30 ) {
-          //     // still hot, but dry enough to enjoy wearing short sleeves without feeling sticky
-          //     // dry enough for my thighs to not stick together (or stick to things...) so i can wear shorts
-          //     let strings = ["breathable"];
-          //     get_tops(strings);
-          //     get_bottoms(strings);
-          // }
+          // hot but not hot enough to care about humidity
+          else if ( 26 < temp < 30 ) {
+              // still hot, but dry enough to enjoy wearing short sleeves without feeling sticky
+              // dry enough for my thighs to not stick together (or stick to things...) so i can wear shorts
+              let strings = ["breathable","layerable"];
+              get_tops(strings);
+              get_bottoms(strings);
+          }
+          else if ( 21 < temp < 26 ) {
+              // still hot, but dry enough to enjoy wearing short sleeves without feeling sticky
+              // dry enough for my thighs to not stick together (or stick to things...) so i can wear shorts
+              let strings = ["layerable"];
+              get_tops(strings);
+              get_bottoms(strings);
+          }
 
           // // PERFECT TEMPERATURE, and any humidity cannot change that!!
           // else if (temp < 21 && temp > 16) {
